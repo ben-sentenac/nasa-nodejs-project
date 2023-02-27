@@ -3,11 +3,12 @@ const app = require('../../app');
 const { loadingPlanetsData } = require('../../models/planets.model');
 
 const { connectMongo, disconnectMongo } = require('../../utils/mongo');
+require('dotenv').config();
 
 describe('Launches api', () => {
 
     beforeAll(async () => {
-        await connectMongo();
+        await connectMongo(process.env.MONGO_URL);
         await loadingPlanetsData();
       });
     
